@@ -40,7 +40,7 @@
       method: 'POST',
       data: {
         text: text,
-        count: text 
+        count: count 
       },
       success: function(resp) {
         $('#todo-items').html(resp);
