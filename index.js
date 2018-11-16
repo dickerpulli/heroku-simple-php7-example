@@ -1,11 +1,21 @@
 (function() {
   'use strict';
+  
+  function loadTodos() {
+    $.ajax({
+      url: '',
+      success: function() {
+      },
+      error: function() {
+      }
+    });
+  }
 
   $(document).ready(function() {
     $errorsAlert = $('#errors').parent('div.alert');
     $errorsSpan = $('#errors');
     $('form#add-todo').submit(function(event) {
-      event.preventDefault();
+      $(this).preventDefault();
       const text = $('#text').val();
       const count = $('#count').val();
       $errorsSpan.text(text + ' : ' + count);
