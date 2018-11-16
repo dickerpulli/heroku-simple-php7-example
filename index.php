@@ -20,7 +20,7 @@
 				<div class="col-md-auto">
 					<div role="alert" class="alert alert-danger alert-dismissible fade show" style="display: none">
 						<span id="errors"></span>
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<button type="button" class="close" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
