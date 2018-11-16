@@ -7,6 +7,7 @@
       const text = $('#text').val();
       const count = $('#count').val();
       $('#errors').text(text + ' : ' + count);
+      $('#errors').parent('div.alert').show();
     });
   });
 })();
