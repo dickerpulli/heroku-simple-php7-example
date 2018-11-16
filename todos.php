@@ -1,5 +1,9 @@
 <?php
 
-die($_SERVER['REQUEST_METHOD']);
+$method = $_SERVER['REQUEST_METHOD'];
+
+if ($method == 'GET') {
+  throw new Exeption();
+}
 
 ?>
