@@ -2,6 +2,11 @@
   'use strict';
 
   $(document).ready(function() {
-    $('body').html('<h1>Hello world!</h1>');
+    $('form#add-todo').submit(function(event) {
+      event.preventDefault();
+      const text = $('#text").val();
+      const count = $('#count").val();
+      alert(text + ' : ' + count);
+    });
   });
 })();
