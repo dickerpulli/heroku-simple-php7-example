@@ -41,7 +41,8 @@ function deleteTodo($id)
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, 'https://simple-react-example.herokuapp.com/todos');
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  //curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+  curl_setopt($ch, CURLOPT_POSTFIELDS, 'id=$id');
   $json = curl_exec($ch);
   curl_close($ch);
   return json_decode($json, true);
