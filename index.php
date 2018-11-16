@@ -30,7 +30,7 @@
 					<div class="card">
 						<div class="card-body">
 							<h1>Add Item</h1>
-							<form class="">
+							<form id="add-todo">
 								<div class="form-group">
 									<label for="text" class="form-label">Text</label>
 									<input required="" placeholder="Enter text" type="text" id="text" class="form-control">
