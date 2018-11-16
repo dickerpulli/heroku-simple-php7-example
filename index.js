@@ -35,6 +35,14 @@
   }
   
   function registerButtonActions() {
+    $('button.details-button').click(function() {
+      const details = $('#' + $(this).data('details-id'));
+      if (details.is(':hidden')) {
+        details.show();
+      } else {
+        details.hide();
+      }
+    });
     $('button.delete-button').click(function() {
       deleteTodo($(this).data('todo-id'));
     });
