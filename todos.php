@@ -49,6 +49,18 @@ function getTodoCards($todos)
   return $todoCards;
 }
 
+function deleteTodo($todos, $id)
+{
+  $newTodos = array();
+  foreach($todos as $index => $todo) {
+    if ($todo['id'] != $id) 
+    {
+      $newTodos[] = $todo;
+    }
+  }
+  $_SESSION['todos'] = $newTodos;
+  return $newTodos;
+}
 
 if ($method == 'GET') 
 {
@@ -56,7 +68,9 @@ if ($method == 'GET')
 }
 else if ($method == 'DELETE') 
 {
-   
+  parse_str(file_get_contents("php://input"), $post_vars);
+  $todos = deleteTodo($todos, $post_vars['id']);
+  echo getTodoCards($todos);
 }
 else 
 {
