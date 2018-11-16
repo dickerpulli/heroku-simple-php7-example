@@ -38,27 +38,25 @@ function getTodos() {
 
 function deleteTodo($id)
 {
-  $todos = getTodos();
-  $newTodos = array();
-  foreach($todos as $index => $todo) {
-    if ($todo['id'] != $id) 
-    {
-      $newTodos[] = $todo;
-    }
-  }
-  $_SESSION['todos'] = $newTodos;
-  return $newTodos;
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, 'https://simple-react-example.herokuapp.com/todos');
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  //curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
+  $json = curl_exec($ch);
+  curl_close($ch);
+  return json_decode($json, true);
 }
 
 function addTodo($text, $count)
 {
-  $todos = getTodos();
-  $todos[] = array(
-    'id' => uniqid(),
-    'text' => $text,
-    'count' => $count);
-  $_SESSION['todos'] = $todos;
-  return $todos;
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, 'https://simple-react-example.herokuapp.com/todos');
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_POST, true);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, 'text=$text&count=$count');
+  $json = curl_exec($ch);
+  curl_close($ch);
+  return json_decode($json, true);
 }
 
 $method = $_SERVER['REQUEST_METHOD'];
