@@ -8,7 +8,7 @@
     $.ajax({
       url: '/todos.php',
       success: function(resp) {
-        $('todo-items').html(resp);
+        $('#todo-items').html(resp);
       },
       error: function(resp) {
         showErrors(resp.message);
