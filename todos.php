@@ -6,19 +6,19 @@ if (!isset($_SESSION['todos']))
 {
   $_SESSION['todos'] = array(
     array(
-      'id' => 1,
+      'id' => uniqid(),
       'text' => 'Buy some apples',
       'count' => 3),
     array(
-      'id' => 2,
+      'id' => uniqid(),
       'text' => 'Buy some bananas',
       'count' => 9),
     array(
-      'id' => 3,
+      'id' => uniqid(),
       'text' => 'Buy some chillis',
       'count' => 2),
     array(
-      'id' => 4,
+      'id' => uniqid(),
       'text' => 'Buy some dattles',
       'count' => 11)
   );
@@ -62,6 +62,16 @@ function deleteTodo($todos, $id)
   return $newTodos;
 }
 
+function addTodo($todos, $text, $count)
+{
+  $todos[] = array(
+    'id' => uniqid(),
+    'text' => $text,
+    'count' => $count);
+  $_SESSION['todos'] = $todos;
+  return $todos;
+}
+
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method == 'GET') 
 {
@@ -71,6 +81,12 @@ else if ($method == 'DELETE')
 {
   parse_str(file_get_contents("php://input"), $post_vars);
   $todos = deleteTodo($todos, $post_vars['id']);
+  echo getTodoCards($todos);
+}
+else if ($method == 'POST') 
+{
+  parse_str(file_get_contents("php://input"), $post_vars);
+  $todos = addTodo($todos, $post_vars['text'], $post_vars['count']);
   echo getTodoCards($todos);
 }
 else 
