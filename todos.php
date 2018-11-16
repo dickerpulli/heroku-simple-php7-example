@@ -52,8 +52,9 @@ function getTodos() {
   return $todos;
 }
 
-function deleteTodo($todos, $id)
+function deleteTodo($id)
 {
+  $todos = getTodos();
   $newTodos = array();
   foreach($todos as $index => $todo) {
     if ($todo['id'] != $id) 
@@ -65,8 +66,9 @@ function deleteTodo($todos, $id)
   return $newTodos;
 }
 
-function addTodo($todos, $text, $count)
+function addTodo($text, $count)
 {
+  $todos = getTodos();
   $todos[] = array(
     'id' => uniqid(),
     'text' => $text,
