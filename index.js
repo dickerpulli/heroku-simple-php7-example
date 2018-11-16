@@ -9,6 +9,7 @@
       url: '/todos.php',
       success: function(resp) {
         $('#todo-items').html(resp);
+        registerButtonActions();
       },
       error: function(resp) {
         showErrors(resp.status + ': ' + resp.statusText);
@@ -25,10 +26,17 @@
       },
       success: function(resp) {
         $('#todo-items').html(resp);
+        registerButtonActions();
       },
       error: function(resp) {
         showErrors(resp.status + ': ' + resp.statusText);
       }
+    });
+  }
+  
+  function registerButtonActions() {
+    $('button.delete-button').click(function() {
+      deleteTodo($(this).data('todo-id'));
     });
   }
   
@@ -53,9 +61,6 @@
     });
     errorsAlert.find('button.close').click(function() {
       hideErrors();
-    });
-    $('button.delete-button').click(function() {
-      deleteTodo($(this).data('todo-id'));
     });
   });
 })();
