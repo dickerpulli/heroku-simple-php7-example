@@ -2,9 +2,9 @@
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-if ($method == 'GET') 
+if (!isset($_SESSION['todos'])) 
 {
-  $todos = array(
+  $_SESSION['todos'] = array(
     array(
       'id' => 1,
       'text' => 'Buy some apples',
@@ -22,6 +22,12 @@ if ($method == 'GET')
       'text' => 'Buy some dattles',
       'count' => 11)
   );
+}
+$todos = $_SESSION['todos'];
+
+if ($method == 'GET') 
+{
+  
   foreach($todos as $index => $todo) {
     ?>
     <div class="mb-2 card">
