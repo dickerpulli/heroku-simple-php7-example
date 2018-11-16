@@ -42,7 +42,7 @@ function deleteTodo($id)
   curl_setopt($ch, CURLOPT_URL, 'https://simple-react-example.herokuapp.com/todos');
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
-  curl_setopt($ch, CURLOPT_POSTFIELDS, 'id=$id');
+  curl_setopt($ch, CURLOPT_POSTFIELDS, 'id=' . $id);
   $json = curl_exec($ch);
   curl_close($ch);
   return json_decode($json, true);
@@ -54,7 +54,7 @@ function addTodo($text, $count)
   curl_setopt($ch, CURLOPT_URL, 'https://simple-react-example.herokuapp.com/todos');
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($ch, CURLOPT_POST, true);
-  curl_setopt($ch, CURLOPT_POSTFIELDS, 'text=$text&count=$count');
+  curl_setopt($ch, CURLOPT_POSTFIELDS, 'text=' . $text . '&count=' . $count);
   $json = curl_exec($ch);
   curl_close($ch);
   return json_decode($json, true);
