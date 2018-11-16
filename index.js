@@ -4,7 +4,7 @@
   $(document).ready(function() {
     $('form#add-todo').submit(function(event) {
       event.preventDefault();
-      const text = $('#text").val();
+      const text = $('#text').val();
       const count = $('#count").val();
       alert(text + ' : ' + count);
     });
