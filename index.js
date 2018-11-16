@@ -16,6 +16,22 @@
     });
   }
   
+  function deleteTodo(todoId) {
+    $.ajax({
+      url: '/todos.php',
+      method: 'DELETE',
+      data: {
+        id: todoId
+      },
+      success: function(resp) {
+        $('#todo-items').html(resp);
+      },
+      error: function(resp) {
+        showErrors(resp.status + ': ' + resp.statusText);
+      }
+    });
+  }
+  
   function showErrors(messages) {
     errorsSpan.text(messages);
     errorsAlert.show();
