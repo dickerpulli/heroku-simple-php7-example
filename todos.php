@@ -27,29 +27,13 @@ function getTodoCards($todos)
 }
   
 function getTodos() {
-  if (!isset($_SESSION['todos'])) 
-  {
-    $_SESSION['todos'] = array(
-      array(
-        'id' => uniqid(),
-        'text' => 'Buy some apples',
-        'count' => 3),
-      array(
-        'id' => uniqid(),
-        'text' => 'Buy some bananas',
-        'count' => 9),
-      array(
-        'id' => uniqid(),
-        'text' => 'Buy some chillis',
-        'count' => 2),
-      array(
-        'id' => uniqid(),
-        'text' => 'Buy some dattles',
-        'count' => 11)
-    );
-  }
-  $todos = $_SESSION['todos'];
-  return $todos;
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, 'https://simple-react-example.herokuapp.com/todos');
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  //curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
+  $json = curl_exec($ch);
+  curl_close($ch);
+  return json_decode($json);
 }
 
 function deleteTodo($id)
