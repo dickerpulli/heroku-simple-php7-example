@@ -25,7 +25,7 @@ if (!isset($_SESSION['todos']))
 }
 $todos = $_SESSION['todos'];
 
-function getTodoCards() 
+function getTodoCards($todos) 
 {
   $todoCards = '';
   foreach($todos as $index => $todo) {
@@ -52,7 +52,7 @@ function getTodoCards()
 
 if ($method == 'GET') 
 {
-  echo getTodoCards();
+  echo getTodoCards($todos);
 }
 else if ($method == 'DELETE') 
 {
