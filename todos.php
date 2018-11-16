@@ -34,7 +34,7 @@ function getTodoCards()
       <div class="card-body">
         <div class="container">
           <div class="align-items-center justify-content-between row">
-            <div class="col">' . $todo['text'] ' . ' : ' . $todo['count'] . '</div>
+            <div class="col">' . $todo['text'] . ' : ' . $todo['count'] . '</div>
             <div class="col">
               <button type="button" class="btn-danger float-right btn btn-primary delete-button" data-todo-id="' . $todo['id']. '">Delete</button>
               <button type="button" class="float-right mr-1 btn btn-primary details-button" data-details-id="details_' . $todo['id']. '">Details</button>
