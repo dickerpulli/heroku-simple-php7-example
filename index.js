@@ -54,5 +54,8 @@
     errorsAlert.find('button.close').click(function() {
       hideErrors();
     });
+    $('button.delete-button').click(function() {
+      deleteTodo($(this).data('todo-id'));
+    });
   });
 })();
