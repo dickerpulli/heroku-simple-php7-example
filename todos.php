@@ -32,7 +32,7 @@ if ($method == 'GET')
             <div class="col">
               <button type="button" class="btn-danger float-right btn btn-primary">Delete</button>
               <button type="button" class="float-right mr-1 btn btn-primary details-button" data-details-id="details_<?php echo $todo['id']; ?>">Details</button>
-              <div id="details_<?php echo $todo['id']; ?>" class="float-right">Buy the cheepest ones</div>
+              <div id="details_<?php echo $todo['id']; ?>" class="float-right" style="display: none">Buy the cheepest ones</div>
             </div>
           </div>
         </div>
