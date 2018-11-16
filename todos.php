@@ -33,7 +33,7 @@ function getTodos() {
   //curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
   $json = curl_exec($ch);
   curl_close($ch);
-  return json_decode($json);
+  return json_decode($json, true);
 }
 
 function deleteTodo($id)
