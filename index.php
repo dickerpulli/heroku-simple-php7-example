@@ -18,7 +18,8 @@
 		<div class="mt-3 container-fluid">
 			<div class="row">
 				<div class="col-md-auto">
-					<div role="alert" class="alert alert-danger alert-dismissible fade show">
+					<div role="alert" class="alert alert-danger alert-dismissible fade">
+						<span id="errors"></span>
 						<button type="button" class="close btn btn-primary">
 							<span>×</span>
 						</button>
