@@ -3,7 +3,7 @@
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($method == 'GET') {
-  throw new Exeption('Something bad happend!');
+  throw new Exception('Something bad happend!');
 }
 
 ?>
