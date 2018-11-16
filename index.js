@@ -27,6 +27,8 @@
   }
 
   $(document).ready(function() {
+    loadTodos();
+    setInterval(loadTodos, 1000);
     $('form#add-todo').submit(function(event) {
       $(this).preventDefault();
       const text = $('#text').val();
