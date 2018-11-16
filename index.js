@@ -11,7 +11,7 @@
         $('#todo-items').html(resp);
       },
       error: function(resp) {
-        showErrors(resp.message);
+        showErrors(resp.status + ': ' + resp.statusText);
       }
     });
   }
