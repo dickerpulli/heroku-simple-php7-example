@@ -36,7 +36,7 @@ if ($method == 'GET')
           <div class="align-items-center justify-content-between row">
             <div class="col"><?php echo $todo['text']; ?> : <?php echo $todo['count']; ?></div>
             <div class="col">
-              <button type="button" class="btn-danger float-right btn btn-primary">Delete</button>
+              <button type="button" class="btn-danger float-right btn btn-primary delete-button" data-todo-id="<?php echo $todo['id']; ?>">Delete</button>
               <button type="button" class="float-right mr-1 btn btn-primary details-button" data-details-id="details_<?php echo $todo['id']; ?>">Details</button>
               <div id="details_<?php echo $todo['id']; ?>" class="float-right" style="display: none">Buy the cheepest ones</div>
             </div>
