@@ -1,6 +1,9 @@
 (function() {
   'use strict';
   
+  const errorsAlert = $('#errors').parent('div.alert');
+  const errorsSpan = $('#errors');
+  
   function loadTodos() {
     $.ajax({
       url: '/todos.php',
@@ -14,17 +17,13 @@
   }
   
   function showErrors(messages) {
-    $errorsAlert = $('#errors').parent('div.alert');
-    $errorsSpan = $('#errors');
-    $errorsSpan.text(messages);
-    $errorsAlert.show();
+    errorsSpan.text(messages);
+    errorsAlert.show();
   }
   
   function hideErrors() {
-    $errorsAlert = $('#errors').parent('div.alert');
-    $errorsSpan = $('#errors');
-    $errorsAlert.hide();
-    $errorsSpan.text('');
+    errorsAlert.hide();
+    errorsSpan.text('');
   }
 
   $(document).ready(function() {
@@ -34,7 +33,7 @@
       const count = $('#count').val();
       showErrors(text + ' : ' + count);
     });
-    $errorsAlert.find('button.close').click(function() {
+    errorsAlert.find('button.close').click(function() {
       hideErrors();
     });
   });
