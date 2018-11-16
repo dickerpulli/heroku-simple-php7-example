@@ -2,29 +2,6 @@
 
 session_start();
 
-if (!isset($_SESSION['todos'])) 
-{
-  $_SESSION['todos'] = array(
-    array(
-      'id' => uniqid(),
-      'text' => 'Buy some apples',
-      'count' => 3),
-    array(
-      'id' => uniqid(),
-      'text' => 'Buy some bananas',
-      'count' => 9),
-    array(
-      'id' => uniqid(),
-      'text' => 'Buy some chillis',
-      'count' => 2),
-    array(
-      'id' => uniqid(),
-      'text' => 'Buy some dattles',
-      'count' => 11)
-  );
-}
-$todos = $_SESSION['todos'];
-
 function getTodoCards($todos) 
 {
   $todoCards = '';
@@ -47,6 +24,32 @@ function getTodoCards($todos)
     ';
   }
   return $todoCards;
+}
+  
+function getTodos() {
+  if (!isset($_SESSION['todos'])) 
+  {
+    $_SESSION['todos'] = array(
+      array(
+        'id' => uniqid(),
+        'text' => 'Buy some apples',
+        'count' => 3),
+      array(
+        'id' => uniqid(),
+        'text' => 'Buy some bananas',
+        'count' => 9),
+      array(
+        'id' => uniqid(),
+        'text' => 'Buy some chillis',
+        'count' => 2),
+      array(
+        'id' => uniqid(),
+        'text' => 'Buy some dattles',
+        'count' => 11)
+    );
+  }
+  $todos = $_SESSION['todos'];
+  return $todos;
 }
 
 function deleteTodo($todos, $id)
@@ -75,18 +78,19 @@ function addTodo($todos, $text, $count)
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method == 'GET') 
 {
+  $todos = getTodos();
   echo getTodoCards($todos);
 }
 else if ($method == 'DELETE') 
 {
   parse_str(file_get_contents("php://input"), $post_vars);
-  $todos = deleteTodo($todos, $post_vars['id']);
+  $todos = deleteTodo($post_vars['id']);
   echo getTodoCards($todos);
 }
 else if ($method == 'POST') 
 {
   parse_str(file_get_contents("php://input"), $post_vars);
-  $todos = addTodo($todos, $post_vars['text'], $post_vars['count']);
+  $todos = addTodo($post_vars['text'], $post_vars['count']);
   echo getTodoCards($todos);
 }
 else 
