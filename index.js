@@ -34,6 +34,24 @@
     });
   }
   
+  function addTodo(text, count) {
+    $.ajax({
+      url: '/todos.php',
+      method: 'POST',
+      data: {
+        text: text,
+        count: text 
+      },
+      success: function(resp) {
+        $('#todo-items').html(resp);
+        registerButtonActions();
+      },
+      error: function(resp) {
+        showErrors(resp.status + ': ' + resp.statusText);
+      }
+    });
+  }
+  
   function registerButtonActions() {
     $('button.details-button').click(function() {
       const details = $('#' + $(this).data('details-id'));
@@ -65,7 +83,7 @@
       event.preventDefault();
       const text = $('#text').val();
       const count = $('#count').val();
-      showErrors(text + ' : ' + count);
+      addTodo(text, count);
     });
     errorsAlert.find('button.close').click(function() {
       hideErrors();
