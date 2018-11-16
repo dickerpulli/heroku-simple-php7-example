@@ -30,7 +30,7 @@
     loadTodos();
     setInterval(loadTodos, 1000);
     $('form#add-todo').submit(function(event) {
-      $(this).preventDefault();
+      event.preventDefault();
       const text = $('#text').val();
       const count = $('#count').val();
       showErrors(text + ' : ' + count);
