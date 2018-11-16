@@ -6,7 +6,7 @@
       event.preventDefault();
       const text = $('#text').val();
       const count = $('#count').val();
-      alert(text + ' : ' + count);
+      $('#errors').text(text + ' : ' + count);
     });
   });
 })();
