@@ -18,7 +18,7 @@
 		<div class="mt-3 container-fluid">
 			<div class="row">
 				<div class="col-md-auto">
-					<div role="alert" class="alert alert-danger alert-dismissible fade" style="display: none">
+					<div role="alert" class="alert alert-danger alert-dismissible fade show" style="display: none">
 						<span id="errors"></span>
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
