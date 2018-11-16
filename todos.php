@@ -1,6 +1,6 @@
 <?php
 
-$method = $_SERVER['REQUEST_METHOD'];
+session_start();
 
 if (!isset($_SESSION['todos'])) 
 {
@@ -62,6 +62,7 @@ function deleteTodo($todos, $id)
   return $newTodos;
 }
 
+$method = $_SERVER['REQUEST_METHOD'];
 if ($method == 'GET') 
 {
   echo getTodoCards($todos);
